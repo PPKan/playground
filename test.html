@@ -1,0 +1,457 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="iPVita"><title>
+	
+</title><meta name="author" content="ThemeFuse" /><meta name="keywords" /><meta name="description" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /><link rel="stylesheet" type="text/css" href="style/style.css" title="style" /><link rel="stylesheet" type="text/css" href="DDMenu/ddlevelsmenu-base7.css" /><link rel="stylesheet" type="text/css" href="DDMenu/ddlevelsmenu-topbar7.css" />
+    <script src="js/jquery-1.9.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="DDMenu/ddlevelsmenu.js"></script>
+    <script type="text/javascript">
+        ddlevelsmenu.setup("ddtopmenubar", "topbar");
+        $(document).ready(function () {
+            $("div#upperDiv").css({ "height": "80px" });
+            $("div#menuDiv").css({ "height": "35px" });
+            $("div#footDiv").css({ "height": "60px", "font": "normal 90% 'Arial', arial, sans-serif", "text-align": "center", "color": "#FFF", "letter-spacing": "0.1em" });
+        });
+        $(window).resize(function () {
+            $("div#upperDiv").css({ "height": "80px" });
+            $("div#menuDiv").css({ "height": "35px" });
+            $("div#footDiv").css({ "height": "60px", "font": "normal 90% 'Arial', arial, sans-serif", "text-align": "center", "color": "#FFF", "letter-spacing": "0.1em" });
+        });
+        function load() {
+            iframe = document.getElementById('frmMAIN');
+            if (iframe) {
+                var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+                if (iframeWin.document.body) {
+                    //iframe.height = 300;
+                    if (iframeWin.document.documentElement.scrollHeight > iframeWin.document.body.scrollHeight)
+                        $("#frmMAIN").css({ "height": iframeWin.document.documentElement.scrollHeight + "px" });
+                    else
+                        $("#frmMAIN").css({ "height": iframeWin.document.body.scrollHeight + "px" });
+                }
+            }
+        }
+
+        function cb_set(box) {
+            if (!box.checked) {
+                //                var strCookies1=new String(document.cookie);
+                //                alert(strCookies1);
+                DelCookie("pvUser");
+                var TxtBox = document.getElementById('Password');
+                TxtBox.value = "";
+            }
+        }
+
+        function checkPassword() {
+            if (document.getElementById('passwordEncrypted').value == "true") {
+                var TxtBox = document.getElementById('Password');
+                TxtBox.value = "";
+                document.getElementById('passwordEncrypted').value = "";
+            }
+
+        }
+        function showLogin() {
+            document.getElementById("loginBlock").style.display = "block";
+        }
+        function HideLogin() {
+            document.getElementById("loginBlock").style.display = "none";
+        }
+    </script>
+    <style type="text/css">
+        /*
+        作者：Yuxin
+        教學文：http://fundesigner.net/only-css-menu
+        授權：MIT License
+        */
+        
+        *
+        {
+            font-family: Microsoft JhengHei;
+        }
+        
+        /* 初始化 */
+        body, ul, li, a
+        {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        
+        ul, li
+        {
+            list-style: none;
+        }
+        /* 選單 li 之樣式 */
+        ul.navigation li
+        {
+            position: relative;
+            float: left;
+        }
+        /* 選單 li 裡面連結之樣式 */
+        ul.navigation li a
+        {
+            display: block; /*padding: 12px 20px;*/
+            background: #fff;
+            color: #000;
+        }
+        /* 特定在第一層，以左邊灰線分隔 */
+        ul.navigation > li > a
+        {
+            border-bottom: 0px solid #CCC;
+            border-left: 0px solid #CCC;
+        }
+        ul.navigation > li > a:hover
+        {
+            color: white;
+            background: #DDD;
+        }
+        /* 特定在第一層 > 第二層或以後下拉部分之樣式 */
+        ul.navigation ul
+        {
+            display: none;
+            float: left;
+            position: absolute;
+            left: -160px;
+            margin: 0;
+        }
+        /* 當第一層選單被觸發時，指定第二層顯示 */
+        /*ul.navigation li:hover > ul{
+        display: block;
+        }*/
+        /* 特定在第二層或以後下拉部分 li 之樣式 */
+        ul.navigation ul li
+        {
+            border-bottom: 1px solid #DDD;
+        }
+        /* 特定在第二層或以後下拉部分 li （最後一項不要底線）之樣式 */
+        ul.navigation ul li:last-child
+        {
+            border-bottom: none;
+        }
+        /* 第二層或以後選單 li 之樣式 */
+        ul.navigation ul a
+        {
+            /*width: 120px;*/ /*padding: 10px 12px;*/
+            color: #000;
+            background: #fff;
+        }
+        ul.navigation ul a:hover
+        {
+            background: #fff;
+        }
+        /* 第三層之後，上一層的選單觸發則顯示出來（皆為橫向拓展） */
+        ul.navigation ul li:hover > ul
+        {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 100%;
+        }
+        /* 箭頭向下 */
+        .arrow-bottom
+        {
+            display: inline-block;
+            margin-left: 5px;
+            border-top: 4px solid black;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+            width: 1px;
+            height: 1px;
+        }
+        
+        /* 箭頭向右 */
+        .arrow-right
+        {
+            display: inline-block;
+            margin-left: 12px;
+            border-top: 3px solid transparent;
+            border-bottom: 3px solid black;
+            border-left: 3px solid #666;
+            width: 1px;
+            height: 1px;
+        }
+        
+        /* Menu */
+        input[type=checkbox]:checked ~ #ddtopmenubar{
+            display: none;
+        }
+            
+        #show-menu, .show-menu {
+	        display: none;
+        }
+        
+        #menudisplayDiv
+        {
+            width: 500px;
+            height: 200px;
+            position: absolute;
+            top: 145px;
+            left: 30%;
+        }
+        
+        @media screen and (max-width : 980px)
+        {  
+            #ipv_title
+            {
+                display: none;
+            }
+            
+            /* Menu Button */
+            .show-menu {
+                float: left;
+                color: #000;
+                background-color: #e5e5e5;
+                display: inline-block;
+                padding: 5px;
+                margin-bottom: 0;
+                font-size: 15px;
+                font-weight: bold;
+                line-height: 1.42857143;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle;
+                -ms-touch-action: manipulation;
+                touch-action: manipulation;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                border-radius: 4px;
+            }
+            
+            #show-menu {
+	            display: none;
+            }
+            
+            /* 主選單 */
+            #ddtopmenubar {
+	            display: none !important;
+	            max-width: 180px;
+            }
+            
+            #ddtopmenubar li a 
+            {
+                min-width: 165px;
+                font-size: 15px !important;
+                color: #fff;
+            }
+            
+            .mattblackmenu ul
+            {
+                width: 100%;
+            }
+            
+            .ddsubmenustyle {
+                background: none;
+            }
+            
+            input[type=checkbox]:checked ~ #ddtopmenubar{
+                display: block !important;
+                box-shadow: 2px 2px 5px rgba(0%,0%,0%,0.2);
+                position: absolute;
+                top: 115px;
+            }            
+            .ddsubmenustyle li a {
+                width: 180px;
+                text-decoration: none;
+                padding: 4px 5px;
+                border-bottom: 1px solid #a7a7a7;
+                box-shadow: 2px 2px 5px rgba(0%,0%,0%,0.2);
+                font-size: 15px;
+            }
+            
+            [id^="ddsubmenu"]
+            {
+                left: 180px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form name="form1" method="post" action="Title.aspx?lang=traditional_chinese" id="form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTgxMDE0OTAxNg9kFgQCAQ9kFgQCAg8WAh4HY29udGVudGRkAgMPFgIfAGRkAgMPZBYMAgcPZBYIAgEPFgIeBGhyZWZkFgICAQ8WAh4Dc3JjBRZ+L3N0eWxlL2JsYW5rX2xvZ28ucG5nZAIDDxYCHglpbm5lcmh0bWwFIuWKm+iDveiDvea6kC3lpKrpmb3og73nm6Pmjqfns7vntbFkAgUPDxYCHgRUZXh0BQhMYW5ndWFnZWRkAgcPEGQPFgVmAgECAgIDAgQWBRAFB0VuZ2xpc2gFB2VuZ2xpc2hnEAUM57mB6auU5Lit5paHBRN0cmFkaXRpb25hbF9jaGluZXNlZxAFDOeugOS9k+S4reaWhwUSc2ltcGxpZmllZF9jaGluZXNlZxAFCeaXpeacrOiqngUIamFwYW5lc2VnEAUHRGV1dHNjaAUHZGV1dHNjaGcWAQIBZAIJDxYCHgVzdHlsZQUoYmFja2dyb3VuZDpCcm93bjtiYWNrZ3JvdW5kLWNvbG9yOkJyb3duOxYEAgEPZBYCZg9kFgJmD2QWAgIBDxYCHwMF0QQ8dWwgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6QnJvd247Ij48bGk+PGEgdGl0bGU9IiIgc3R5bGU9ImJhY2tncm91bmQ6QnJvd247YmFja2dyb3VuZC1jb2xvcjpCcm93bjtjdXJzb3I6cG9pbnRlcjsiICBocmVmPSJodHRwOi8vbGluZW5nLmlwdml0YS5uZXQiIHJlbD0iZGRzdWJtZW51MSI+5YWs5Y+46aaW6aCBPC9hPjwvbGk+PGxpPjxhIHRpdGxlPSIiIHN0eWxlPSJiYWNrZ3JvdW5kOkJyb3duO2JhY2tncm91bmQtY29sb3I6QnJvd247Y3Vyc29yOnBvaW50ZXI7IiAgaHJlZj0iaHR0cDovL2xpbmVuZy5pcHZpdGEubmV0L3B2bWFpbl8yNy5hc3B4IiB0YXJnZXQ9ImZybU1BSU4iIHJlbD0iZGRzdWJtZW51MiI+5aSq6Zm96IO955uj5o6n57O757WxPC9hPjwvbGk+PGxpPjxhIHRpdGxlPSIiIHN0eWxlPSJiYWNrZ3JvdW5kOkJyb3duO2JhY2tncm91bmQtY29sb3I6QnJvd247IiByZWw9ImRkc3VibWVudTMiPueVsOW4uOi/vei5pDwvYT48L2xpPjxsaT48YSB0aXRsZT0iIiBzdHlsZT0iYmFja2dyb3VuZDpCcm93bjtiYWNrZ3JvdW5kLWNvbG9yOkJyb3duOyIgcmVsPSJkZHN1Ym1lbnU0Ij7ns7vntbHnrqHnkIblk6E8L2E+PC9saT48L3VsPmQCAw9kFggCAQ8PFgIeB1Zpc2libGVoFgIeBVN0eWxlBU5mb250LWZhbWlseTrlvq7ou5/mraPpu5Hpq5Q7O2ZvbnQtc2l6ZToxM3B4OyBmb250LXdlaWdodDpib2xkOyBjdXJzb3I6cG9pbnRlcjtkAgMPDxYCHwQFBueZu+WHuhYCHwcFSmZvbnQtZmFtaWx5OuW+rui7n+ato+m7kemrlDs7Zm9udC1zaXplOjEzcHg7IGJhY2tncm91bmQtY29sb3I6dHJhbnNwYXJlbnQ7ZAIFDxYCHwZoFgQCBQ9kFgJmD2QWAgICDw8WAh8EBQnoqJjkvY/miJFkZAIHD2QWAgIBD2QWAgIBDw8WAh8EBQbnmbvlhaVkZAIHD2QWAmYPZBYCZg9kFgQCAQ8PFgIfBAUH5q2h6L+OIWRkAgMPDxYCHwQFDOWKm+iDveiDvea6kGRkAgsPFgQfAgUOcHZtYWluXzI3LmFzcHgeBm9ubG9hZAUGbG9hZCgpZAINDxYCHwUFTWJhY2tncm91bmQtaW1hZ2U6dXJsKHN0eWxlL2Zvb3Rlcl8wNy5wbmcpO3RleHQtYWxpZ246Y2VudGVyO2JhY2tncm91bmQ6QnJvd247FgICAQ8WAh8DBQggIDxici8+IGQCDw9kFgJmD2QWAgIBDxYCHghJbnRlcnZhbALg1ANkAhMPFgIfAwXjGjx1bCBpZD0iZGRzdWJtZW51MSIgY2xhc3M9ImRkc3VibWVudXN0eWxlIj48L3VsPjx1bCBpZD0iZGRzdWJtZW51MiIgY2xhc3M9ImRkc3VibWVudXN0eWxlIj48bGkgPjxhIHRpdGxlPSIiIHN0eWxlPSJiYWNrZ3JvdW5kOkJyb3duO2JhY2tncm91bmQtY29sb3I6QnJvd247IiAgaHJlZj0iaHR0cDovL2xpbmVuZy5pcHZpdGEubmV0L3B2c2l0ZWxpc3QuYXNweCIgdGFyZ2V0PSJmcm1NQUlOIiA+6Zu75bug5riF5ZauPC9hPjwvbGk+PGxpID48YSB0aXRsZT0iIiBzdHlsZT0iYmFja2dyb3VuZDpCcm93bjtiYWNrZ3JvdW5kLWNvbG9yOkJyb3duOyIgIGhyZWY9Imh0dHA6Ly9saW5lbmcuaXB2aXRhLm5ldC9yZWFsc3VtbWFyeS5hc3B4IiB0YXJnZXQ9ImZybU1BSU4iID5QUua4heWWrjwvYT48L2xpPjxsaSA+PGEgdGl0bGU9IiIgc3R5bGU9ImJhY2tncm91bmQ6QnJvd247YmFja2dyb3VuZC1jb2xvcjpCcm93bjsiICBocmVmPSJodHRwOi8vbGluZW5nLmlwdml0YS5uZXQvUFZfRm9ybS9Ib3VybHlNb3ZlLmFzcHgiIHRhcmdldD0iZnJtTUFJTiIgPuavj+aXpemAseaciOeZvOmbu+e1seioiDwvYT48L2xpPjxsaSA+PGEgdGl0bGU9IiIgc3R5bGU9ImJhY2tncm91bmQ6QnJvd247YmFja2dyb3VuZC1jb2xvcjpCcm93bjsiICBocmVmPSJodHRwOi8vbGluZW5nLmlwdml0YS5uZXQvUFZfRm9ybS9QVkFuYWx5c2lzLmFzcHgiIHRhcmdldD0iZnJtTUFJTiIgPuWQhEludmVydGVy55m86Zu76YeP5YiG5p6QPC9hPjwvbGk+PGxpID48YSB0aXRsZT0iIiBzdHlsZT0iYmFja2dyb3VuZDpCcm93bjtiYWNrZ3JvdW5kLWNvbG9yOkJyb3duOyIgIGhyZWY9Imh0dHA6Ly9saW5lbmcuaXB2aXRhLm5ldC9QVl9Gb3JtL1BWRXF1aXBtZW50SW5mby5hc3B4IiB0YXJnZXQ9ImZybU1BSU4iID7oqK3lgpnln7rmnKzos4foqIo8L2E+PC9saT48bGkgPjxhIHRpdGxlPSIiIHN0eWxlPSJiYWNrZ3JvdW5kOkJyb3duO2JhY2tncm91bmQtY29sb3I6QnJvd247IiAgaHJlZj0iaHR0cDovL2xpbmVuZy5pcHZpdGEubmV0L1BWX0Zvcm0vUFZSZWFsSGlzdG9yeVF1ZXJ5LmFzcHgiIHRhcmdldD0iZnJtTUFJTiIgPuWNs+aZgueZvOmbu+izh+ioijwvYT48L2xpPjxsaSA+PGEgdGl0bGU9IiIgc3R5bGU9ImJhY2tncm91bmQ6QnJvd247YmFja2dyb3VuZC1jb2xvcjpCcm93bjsiICBocmVmPSJodHRwOi8vbGluZW5nLmlwdml0YS5uZXQvUFZfRm9ybS9Ib3VybHlTdW5zaGluZS5hc3B4IiB0YXJnZXQ9ImZybU1BSU4iID7lubPlnYfml6XnhafliIbmnpA8L2E+PC9saT48bGkgPjxhIHRpdGxlPSIiIHN0eWxlPSJiYWNrZ3JvdW5kOkJyb3duO2JhY2tncm91bmQtY29sb3I6QnJvd247IiAgaHJlZj0iaHR0cDovL2xpbmVuZy5pcHZpdGEubmV0L1BWX0Zvcm0vSG91cmx5VGVtcGVyYXR1cmUuYXNweCIgdGFyZ2V0PSJmcm1NQUlOIiA+5rqr5bqm5YiG5p6QPC9hPjwvbGk+PGxpID48YSB0aXRsZT0iIiBzdHlsZT0iYmFja2dyb3VuZDpCcm93bjtiYWNrZ3JvdW5kLWNvbG9yOkJyb3duOyIgIGhyZWY9Imh0dHA6Ly9saW5lbmcuaXB2aXRhLm5ldC9QVl9Gb3JtL1BWUFJWYWx1ZUFuYWx5c2lzLmFzcHgiIHRhcmdldD0iZnJtTUFJTiIgPlBS5YC85YiG5p6QPC9hPjwvbGk+PC91bD48dWwgaWQ9ImRkc3VibWVudTMiIGNsYXNzPSJkZHN1Ym1lbnVzdHlsZSI+PGxpID48YSB0aXRsZT0iIiBzdHlsZT0iYmFja2dyb3VuZDpCcm93bjtiYWNrZ3JvdW5kLWNvbG9yOkJyb3duOyIgIGhyZWY9Imh0dHA6Ly9saW5lbmcuaXB2aXRhLm5ldC9QVl9Gb3JtL1BWSW52ZXJ0ZXJBbGFybUluZm8uYXNweCIgdGFyZ2V0PSJmcm1NQUlOIiA+SW52ZXJ0ZXLnlbDluLjos4foqIo8L2E+PC9saT48bGkgPjxhIHRpdGxlPSIiIHN0eWxlPSJiYWNrZ3JvdW5kOkJyb3duO2JhY2tncm91bmQtY29sb3I6QnJvd247IiAgaHJlZj0iaHR0cDovL2xpbmVuZy5pcHZpdGEubmV0L1BWX0Zvcm0vUFZJbnZlcnRlckFsYXJtRGlzcGxheS5hc3B4IiB0YXJnZXQ9ImZybU1BSU4iID5JbnZlcnRlcueVsOW4uOmhr+ekujwvYT48L2xpPjxsaSA+PGEgdGl0bGU9IiIgc3R5bGU9ImJhY2tncm91bmQ6QnJvd247YmFja2dyb3VuZC1jb2xvcjpCcm93bjsiICBocmVmPSJodHRwOi8vbGluZW5nLmlwdml0YS5uZXQvUFZfRm9ybS9QVkludmVydGVyQWxhcm1BbmFseXNpcy5hc3B4IiB0YXJnZXQ9ImZybU1BSU4iID5JbnZlcnRlcueVsOW4uOWIhuaekDwvYT48L2xpPjxsaSA+PGEgdGl0bGU9IiIgc3R5bGU9ImJhY2tncm91bmQ6QnJvd247YmFja2dyb3VuZC1jb2xvcjpCcm93bjsiICBocmVmPSJodHRwOi8vbGluZW5nLmlwdml0YS5uZXQvUFZfRm9ybS9QVkFsYXJtSGFuZGxlLmFzcHgiIHRhcmdldD0iZnJtTUFJTiIgPueVsOW4uOiZleeQhjwvYT48L2xpPjxsaSA+PGEgdGl0bGU9IiIgc3R5bGU9ImJhY2tncm91bmQ6QnJvd247YmFja2dyb3VuZC1jb2xvcjpCcm93bjsiICBocmVmPSJodHRwOi8vbGluZW5nLmlwdml0YS5uZXQvUFZfRm9ybS9QVkFsYXJtRGlzcGxheS5hc3B4IiB0YXJnZXQ9ImZybU1BSU4iID7nlbDluLjmn6XoqaI8L2E+PC9saT48L3VsPjx1bCBpZD0iZGRzdWJtZW51NCIgY2xhc3M9ImRkc3VibWVudXN0eWxlIj48bGkgPjxhIHRpdGxlPSIiIHN0eWxlPSJiYWNrZ3JvdW5kOkJyb3duO2JhY2tncm91bmQtY29sb3I6QnJvd247IiAgaHJlZj0iaHR0cDovL2xpbmVuZy5pcHZpdGEubmV0L1BWX1N5cy9QVkFjY291bnRNYW5hZ2VtZW50LmFzcHgiIHRhcmdldD0iZnJtTUFJTiIgPuW4s+iZn+euoeeQhjwvYT48L2xpPjxsaSA+PGEgdGl0bGU9IiIgc3R5bGU9ImJhY2tncm91bmQ6QnJvd247YmFja2dyb3VuZC1jb2xvcjpCcm93bjsiICBocmVmPSJodHRwOi8vbGluZW5nLmlwdml0YS5uZXQvUFZfU3lzL0NoYW5nZVBhc3N3b3JkLmFzcHgiIHRhcmdldD0iZnJtTUFJTiIgPuiuiuabtOWvhueivDwvYT48L2xpPjxsaSA+PGEgdGl0bGU9IiIgc3R5bGU9ImJhY2tncm91bmQ6QnJvd247YmFja2dyb3VuZC1jb2xvcjpCcm93bjsiICBocmVmPSJodHRwOi8vbGluZW5nLmlwdml0YS5uZXQvUFZfU3lzL1NpdGVTZXR0aW5nLmFzcHgiIHRhcmdldD0iZnJtTUFJTiIgPumbu+W7oOizh+ioiuioreWumjwvYT48L2xpPjxsaSA+PGEgdGl0bGU9IiIgc3R5bGU9ImJhY2tncm91bmQ6QnJvd247YmFja2dyb3VuZC1jb2xvcjpCcm93bjsiICBocmVmPSJodHRwOi8vbGluZW5nLmlwdml0YS5uZXQvUFZfU3lzL0VxdWlwbWVudE1vZGlmeS5hc3B4IiB0YXJnZXQ9ImZybU1BSU4iID7oqK3lgpnos4foqIroqK3lrpo8L2E+PC9saT48bGkgPjxhIHRpdGxlPSIiIHN0eWxlPSJiYWNrZ3JvdW5kOkJyb3duO2JhY2tncm91bmQtY29sb3I6QnJvd247IiAgaHJlZj0iaHR0cDovL2xpbmVuZy5pcHZpdGEubmV0L1BWX1N5cy9FcXVpcG1lbnRpUFZCb3guYXNweCIgdGFyZ2V0PSJmcm1NQUlOIiA+aVBWQm946KOd572u6Kit5a6aPC9hPjwvbGk+PC91bD5kZISLM6zsLh0KC8rnE7YVfU0SwhQenV1dOfB/Toq6MebJ" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=rxQmB67GrBqk3y5BNuueQKwSZPVu-D9faMMe0Ex-PC3viMWvRhzejjR4_xiqnAaoKmomnQRYpV2x9euLmhx0pznjExNP9JE8VZ5-Z-jceDU1&amp;t=635145251460000000" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+var __cultureInfo = {"name":"zh-TW","numberFormat":{"CurrencyDecimalDigits":2,"CurrencyDecimalSeparator":".","IsReadOnly":true,"CurrencyGroupSizes":[3],"NumberGroupSizes":[3],"PercentGroupSizes":[3],"CurrencyGroupSeparator":",","CurrencySymbol":"NT$","NaNSymbol":"不是一個數字","CurrencyNegativePattern":1,"NumberNegativePattern":1,"PercentPositivePattern":1,"PercentNegativePattern":1,"NegativeInfinitySymbol":"負無窮大","NegativeSign":"-","NumberDecimalDigits":2,"NumberDecimalSeparator":".","NumberGroupSeparator":",","CurrencyPositivePattern":0,"PositiveInfinitySymbol":"正無窮大","PositiveSign":"+","PercentDecimalDigits":2,"PercentDecimalSeparator":".","PercentGroupSeparator":",","PercentSymbol":"%","PerMilleSymbol":"‰","NativeDigits":["0","1","2","3","4","5","6","7","8","9"],"DigitSubstitution":1},"dateTimeFormat":{"AMDesignator":"上午","Calendar":{"MinSupportedDateTime":"\/Date(-62135596800000)\/","MaxSupportedDateTime":"\/Date(253402271999999)\/","AlgorithmType":1,"CalendarType":1,"Eras":[1],"TwoDigitYearMax":2029,"IsReadOnly":true},"DateSeparator":"/","FirstDayOfWeek":0,"CalendarWeekRule":0,"FullDateTimePattern":"yyyy\u0027年\u0027M\u0027月\u0027d\u0027日\u0027 tt hh:mm:ss","LongDatePattern":"yyyy\u0027年\u0027M\u0027月\u0027d\u0027日\u0027","LongTimePattern":"tt hh:mm:ss","MonthDayPattern":"M\u0027月\u0027d\u0027日\u0027","PMDesignator":"下午","RFC1123Pattern":"ddd, dd MMM yyyy HH\u0027:\u0027mm\u0027:\u0027ss \u0027GMT\u0027","ShortDatePattern":"yyyy/M/d","ShortTimePattern":"tt hh:mm","SortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss","TimeSeparator":":","UniversalSortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd HH\u0027:\u0027mm\u0027:\u0027ss\u0027Z\u0027","YearMonthPattern":"yyyy\u0027年\u0027M\u0027月\u0027","AbbreviatedDayNames":["週日","週一","週二","週三","週四","週五","週六"],"ShortestDayNames":["日","一","二","三","四","五","六"],"DayNames":["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],"AbbreviatedMonthNames":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月",""],"MonthNames":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月",""],"IsReadOnly":true,"NativeCalendarName":"西曆 (中文)","AbbreviatedMonthGenitiveNames":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月",""],"MonthGenitiveNames":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月",""]},"eras":[1,"西元",null,0]};//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=va_aTpwyxKyRScPXXyJiB5YJaPlUXk5KLa9JQ9lg5iNq5qwMRXhz-TqTQxoO_cmSvslgL7nJJgRbUPwJYanGfyWz7gAWtR_sxu21lHTjvunyFDw2VKOJZJr1vGkebVrlpyVd_cT5tY6glDdiDpyFgFGdDdj8IiL87QXgXyVEJHKTbGwDlA7UmLzBh6Jbs2nN0&amp;t=ca758f3" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=h6on1-n_OZm0Z_9ndfbPjomSW_kn58-aW_xY5zhX6xAXfGetm2IqoRAF_BXB4eD8DMZ1KZ-cRqTfz8bE07TctOA_KnV0-Z-sULmw_e6yqybnEWkRSOljHhQ4M4IiULPkwgTtJYCISeduyzdNspNfb7Fun2jIuf_vjwI4djw3FJcl9txbxgH5LUWs0oc1jp3O0&amp;t=ca758f3" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=sspmDnN9WbyUPY-hNPCl72IkJBZsonwO94yTZrZufZxozAXzAB4NfCtWmKpoJBuOyDgSH3gMPTyHYgwLQFuY1YHNBH8tMSlaohksTiC2v3eU5hBXHeg4OxDVs-xK6H70JK-yFHJfDFpS6CMQU2AtsUr3uulHA4L62TKNbtw727k1&amp;t=ca758f3" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAArNhKXxjgjsNdIRYCDXwcWagWtDFtFdjXfmCM8WlNpIMLgNUjx1f6s0aCzR6wglycAFQ6+P9E+gMvnQI2M1ctVV9ND7wdukUt1MeI0QscGItt5JFS9hwj3J3jkSOujUF7qEfcfovVwq6JdABVEzDMZDsNilSIOoK7cWtpLM0tlBYtP4Ufza8IxL4FuBwXM6/ZjZaLuWVmdB3Tr7HYtcMZn9emzEUDzKU8xaAKEH2DSmwx9uDsP5BGcvvU8uyEqjsUg=" />
+</div>
+    <input type="hidden" name="passwordEncrypted" id="passwordEncrypted" />
+    <input type="hidden" name="mainsite" id="mainsite" value="pvmain_27.aspx" />
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'form1', ['tUpdatePanel1',''], [], [], 90, '');
+//]]>
+</script>
+
+    <div id="upperDiv">
+        <table style="width: 100%; height: 100%;" border="0" cellpadding="0" cellspacing="0">
+            <tr style="width: 100%">
+                <td style="text-align: left; width: 245;">
+                    <a id="pvURL" title="iPVCloud Official Home - 太陽能監控系統" style="width: 245px;
+                        height: 41px;">
+                        <img src="style/blank_logo.png" id="pvLogo" width="245" height="51" title="iPV Official Home - 太陽能監控系統" alt="iPVCloud 太陽能監控系統" style="border-width: 0px" />
+                    </a>
+                </td>
+                <td style="width: 55%;" align="left">
+                    <div id="ipv_title" style="font-family: Gulim; color: #225996; font-size: 250%;
+                        letter-spacing: 0.1em; text-decoration: none;">力能能源-太陽能監控系統</div>
+                </td>
+                <td style="width: 10%;" align="right">
+                    <span id="lbl_language" style="color:Black;font-family:Arial;font-size:Smaller;font-weight:normal;">Language</span>
+                    <select name="DDL_Language" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;DDL_Language\&#39;,\&#39;\&#39;)&#39;, 0)" id="DDL_Language" style="width:80px;">
+	<option value="english">English</option>
+	<option selected="selected" value="traditional_chinese">繁體中文</option>
+	<option value="simplified_chinese">简体中文</option>
+	<option value="japanese">日本語</option>
+	<option value="deutsch">Deutsch</option>
+
+</select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="menuDiv" style="background:Brown;background-color:Brown;">
+        <table style="width: 100%; height: 100%;" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 5%">
+                </td>
+                <td>
+                    <table id="menuTable" width="100%">
+	<tr>
+		<td style="width: 100%;">
+                                <label for="show-menu" class="show-menu">Menu</label>
+	                            <input type="checkbox" id="show-menu" role="button">
+                                <div id="ddtopmenubar" class="mattblackmenu"><ul style="background-color:Brown;"><li><a title="" style="background:Brown;background-color:Brown;cursor:pointer;"  href="http://lineng.ipvita.net" rel="ddsubmenu1">公司首頁</a></li><li><a title="" style="background:Brown;background-color:Brown;cursor:pointer;"  href="http://lineng.ipvita.net/pvmain_27.aspx" target="frmMAIN" rel="ddsubmenu2">太陽能監控系統</a></li><li><a title="" style="background:Brown;background-color:Brown;" rel="ddsubmenu3">異常追蹤</a></li><li><a title="" style="background:Brown;background-color:Brown;" rel="ddsubmenu4">系統管理員</a></li></ul></div>
+                            </td>
+	</tr>
+</table>
+
+                </td>
+                <td align="left">
+                    <div id="loginTab" style="font-family:Verdana;font-size:0.8em;text-align:right;">
+	
+                        <table style="margin: 0 auto" border="0" cellpadding="0">
+                            <tr>
+                                <td style="text-align: right;">
+                                    <ul class="navigation" style="text-align: center; width: 100%;">
+                                        <li style="text-align: center; width: 100%;">
+                                            
+                                            <input type="submit" name="btn_logout" value="登出" id="btn_logout" onmouseover="javascript:showLogin()" onmouseout="javascript:HideLogin()" style="border-width:0px;font-family:微軟正黑體;;font-size:13px; background-color:transparent;" />
+                                            <ul id="loginBlock">
+                                                <li>
+                                                    
+                                                    <table id="LogOutTable" width="200px" style="background-color: #343434">
+		<tr>
+			<td style="text-align: center;">
+                                                                <span id="lbl_welcome" style="color:#37A8AF;">歡迎!</span>
+                                                                <br />
+                                                                <span id="WelcomeUser" style="color:#3E739D;font-weight:bold;">力能能源</span>
+                                                                <br />
+                                                                <span id="version" style="color:#707070;font-weight:bold;font-style:italic;"></span>
+                                                            </td>
+		</tr>
+	</table>
+	
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    
+</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="menudisplayDiv"></div>
+    <iframe id="frmMAIN" name="frmMAIN" src="pvmain_27.aspx" width="100%" frameborder="0" style="overflow-x:hidden; overflow-y:hidden; " onload="load()">
+        <p>
+            此網頁使用框架,但是您的瀏覽器並不支援.</p>
+    </iframe>
+    <div id="footDiv" style="background-image:url(style/footer_07.png);text-align:center;background:Brown;">
+        <div id="txt_footer" style="margin: 0 auto; width: 100%; padding-top: 20px;">  <br/> </div>
+    </div>
+    <div id="UpdatePanel1">
+	
+            <span id="Timer1" style="visibility:hidden;display:none;"></span>
+        
+</div>
+    
+    <div id="ddchildmenubar"><ul id="ddsubmenu1" class="ddsubmenustyle"></ul><ul id="ddsubmenu2" class="ddsubmenustyle"><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/pvsitelist.aspx" target="frmMAIN" >電廠清單</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/realsummary.aspx" target="frmMAIN" >PR清單</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/HourlyMove.aspx" target="frmMAIN" >每日週月發電統計</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/PVAnalysis.aspx" target="frmMAIN" >各Inverter發電量分析</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/PVEquipmentInfo.aspx" target="frmMAIN" >設備基本資訊</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/PVRealHistoryQuery.aspx" target="frmMAIN" >即時發電資訊</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/HourlySunshine.aspx" target="frmMAIN" >平均日照分析</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/HourlyTemperature.aspx" target="frmMAIN" >溫度分析</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/PVPRValueAnalysis.aspx" target="frmMAIN" >PR值分析</a></li></ul><ul id="ddsubmenu3" class="ddsubmenustyle"><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/PVInverterAlarmInfo.aspx" target="frmMAIN" >Inverter異常資訊</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/PVInverterAlarmDisplay.aspx" target="frmMAIN" >Inverter異常顯示</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/PVInverterAlarmAnalysis.aspx" target="frmMAIN" >Inverter異常分析</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/PVAlarmHandle.aspx" target="frmMAIN" >異常處理</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Form/PVAlarmDisplay.aspx" target="frmMAIN" >異常查詢</a></li></ul><ul id="ddsubmenu4" class="ddsubmenustyle"><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Sys/PVAccountManagement.aspx" target="frmMAIN" >帳號管理</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Sys/ChangePassword.aspx" target="frmMAIN" >變更密碼</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Sys/SiteSetting.aspx" target="frmMAIN" >電廠資訊設定</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Sys/EquipmentModify.aspx" target="frmMAIN" >設備資訊設定</a></li><li ><a title="" style="background:Brown;background-color:Brown;"  href="http://lineng.ipvita.net/PV_Sys/EquipmentiPVBox.aspx" target="frmMAIN" >iPVBox裝置設定</a></li></ul></div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(Sys.UI._Timer, {"enabled":true,"interval":60000,"uniqueID":"Timer1"}, null, null, $get("Timer1"));
+});
+//]]>
+</script>
+</form>
+    <script type="text/javascript">
+        $(window).on("load", function () {
+            var flag = 0;
+            $("#menudisplayDiv").click(function () {
+                if ($('#frmMAIN').contents().find("#form1").attr("action").indexOf("pvmain_29.aspx") == 0) {
+                    $("#menudisplayDiv").css('z-index', 0);
+                    if (flag == 0) {
+                        $("#upperDiv").animate({ height: '-80px' }, 600, 'swing');
+                        $("#menuDiv").animate({ height: '-35px' }, 600, 'swing');
+                        $("#footDiv").animate({ height: '-60px' }, 600, 'swing');
+
+                        $("#menudisplayDiv").animate({ top: '30px' }, 600, 'swing');
+                        flag = 1;
+                    } else if (flag == 1) {
+                        $("#upperDiv").animate({ height: '80px' }, 600, 'swing');
+                        $("#menuDiv").animate({ height: '35px' }, 600, 'swing');
+                        $("#footDiv").animate({ height: '60px' }, 600, 'swing');
+
+                        $("#menudisplayDiv").animate({ top: '145px' }, 600, 'swing');
+                        flag = 0;
+                    }
+                }
+                else
+                {
+                    $("#menudisplayDiv").css('z-index', -1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
